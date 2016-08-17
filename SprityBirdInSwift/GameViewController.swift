@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import QuartzCore
 import StoreKit
+import GoogleMobileAds
 
 class GameViewController: UIViewController, SceneDelegate {
 
@@ -29,13 +30,15 @@ class GameViewController: UIViewController, SceneDelegate {
     
     @IBOutlet weak var removeAds: UIButton!
     
+    @IBOutlet weak var bannerView: GADBannerView!
+    
     var scene: Scene?
     var flash: UIView?
     
     var removeAdsProduct:SKProduct!
 	
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-		scene = Scene(size: gameView.bounds.size)
+//		scene = Scene(size: gameView.bounds.size)
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 	}
     
@@ -55,16 +58,15 @@ class GameViewController: UIViewController, SceneDelegate {
         self.gameOverView.alpha = 0
         self.gameOverView.transform = CGAffineTransformMakeScale(0.9, 0.9)
         self.gameView.presentScene(scene)
-        if FlapProducts.store.isProductPurchased(FlapProducts.RemoveAds) {
-            removeAds.hidden = true
-        }else{
-            Chartboost.cacheInterstitial(CBLocationHomeScreen)
-        }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameViewController.handlePurchaseNotification(_:)),
                                                          name: IAPHelper.IAPHelperPurchaseNotification,
                                                          object: nil)
         if IAPHelper.canMakePayments() {
             FlapProducts.store.requestProducts({ (success, products) in
+                if !success {
+                    return
+                }
                 for product in products! {
                     if product.productIdentifier == FlapProducts.RemoveAds {
                         self.removeAdsProduct = product
@@ -72,6 +74,26 @@ class GameViewController: UIViewController, SceneDelegate {
                 }
             })
         }
+        
+        // show banner ads
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if FlapProducts.store.isProductPurchased(FlapProducts.RemoveAds) {
+            removeAds.hidden = true
+            bannerView.hidden = true
+        }else{
+            Chartboost.cacheInterstitial(CBLocationHomeScreen)
+            bannerView.adUnitID = "ca-app-pub-8297449058768881/7054508543"
+            bannerView.rootViewController = self
+            bannerView.loadRequest(GADRequest())
+        }
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     func eventStart() {
@@ -128,6 +150,7 @@ class GameViewController: UIViewController, SceneDelegate {
     func showAds() {
         if FlapProducts.store.isProductPurchased(FlapProducts.RemoveAds) {
             removeAds.hidden = true
+            bannerView.hidden = true
         }else{
             if Chartboost.hasInterstitial(CBLocationHomeScreen) {
                 Chartboost.showInterstitial(CBLocationHomeScreen)
@@ -165,9 +188,9 @@ class GameViewController: UIViewController, SceneDelegate {
                 self.presentViewController(actionAlert, animated: true, completion: nil)
             }
         }))
-//        actionSheet.addAction(UIAlertAction(title: "Restore", style: UIAlertActionStyle.Default, handler: { (action) in
-//            FlapProducts.store.restorePurchases()
-//        }))
+        actionSheet.addAction(UIAlertAction(title: "Restore", style: UIAlertActionStyle.Default, handler: { (action) in
+            FlapProducts.store.restorePurchases()
+        }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         self.presentViewController(actionSheet, animated: true, completion: nil)
     }
@@ -176,5 +199,6 @@ class GameViewController: UIViewController, SceneDelegate {
         guard let productID = notification.object as? String else { return }
         guard removeAdsProduct.productIdentifier == productID else { return }
         removeAds.hidden = true
+        bannerView.hidden = true
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F2AB4CC1D64A24C00CA91C3 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2AB4CB1D64A24C00CA91C3 /* GoogleMobileAds.framework */; };
+		0F2AB4CD1D64A25A00CA91C3 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2AB4CB1D64A24C00CA91C3 /* GoogleMobileAds.framework */; };
+		0F2AB4CE1D64A25A00CA91C3 /* GoogleMobileAds.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2AB4CB1D64A24C00CA91C3 /* GoogleMobileAds.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0F42B08B1D641AA900C92A4D /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F42B08A1D641AA900C92A4D /* IAPHelper.swift */; };
 		0F42B08D1D641B9700C92A4D /* FlapProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F42B08C1D641B9700C92A4D /* FlapProducts.swift */; };
 		0FF25A3F1D63F8DC00D59114 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FF25A3E1D63F8DC00D59114 /* Launch Screen.storyboard */; };
@@ -64,6 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0F2AB4CE1D64A25A00CA91C3 /* GoogleMobileAds.framework in Embed Frameworks */,
 				0FF25A531D640E7200D59114 /* Chartboost.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -72,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F2AB4CB1D64A24C00CA91C3 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		0F42B08A1D641AA900C92A4D /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		0F42B08C1D641B9700C92A4D /* FlapProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlapProducts.swift; sourceTree = "<group>"; };
 		0FF25A3E1D63F8DC00D59114 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -122,9 +127,11 @@
 			files = (
 				0FF25A451D64063100D59114 /* StoreKit.framework in Frameworks */,
 				0FF25A511D640AE800D59114 /* Chartboost.framework in Frameworks */,
+				0F2AB4CD1D64A25A00CA91C3 /* GoogleMobileAds.framework in Frameworks */,
 				0FF25A4B1D64064400D59114 /* UIKit.framework in Frameworks */,
 				0FF25A491D64063F00D59114 /* CoreGraphics.framework in Frameworks */,
 				0FF25A521D640E7200D59114 /* Chartboost.framework in Frameworks */,
+				0F2AB4CC1D64A24C00CA91C3 /* GoogleMobileAds.framework in Frameworks */,
 				0FF25A471D64063800D59114 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +149,7 @@
 		0FF25A411D6405DE00D59114 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F2AB4CB1D64A24C00CA91C3 /* GoogleMobileAds.framework */,
 				0FF25A501D640AE800D59114 /* Chartboost.framework */,
 				0FF25A4A1D64064400D59114 /* UIKit.framework */,
 				0FF25A481D64063F00D59114 /* CoreGraphics.framework */,

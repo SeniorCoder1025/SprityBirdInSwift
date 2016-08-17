@@ -79,13 +79,23 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNa-j3-pL8">
                                 <rect key="frame" x="219" y="10" width="85" height="30"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Remove Ads">
-                                    <color key="titleColor" red="0.99215686270000003" green="0.76470588240000004" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.99215686270000003" green="0.87843137250000003" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onRemoveAds:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yO6-Cl-1Iu"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4G-Hc-KmI" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="guz-8r-KTP"/>
+                                    <constraint firstAttribute="height" constant="50" id="hdp-we-1Bn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -93,12 +103,15 @@
                             <constraint firstItem="CH2-gm-LcR" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="IGS-A1-hsT"/>
                             <constraint firstItem="suH-NP-539" firstAttribute="top" secondItem="CH2-gm-LcR" secondAttribute="bottom" id="Mfa-L6-7m5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gNa-j3-pL8" secondAttribute="trailing" id="TEM-k9-8AH"/>
+                            <constraint firstItem="suH-NP-539" firstAttribute="top" secondItem="Z4G-Hc-KmI" secondAttribute="bottom" id="kIp-IW-G50"/>
                             <constraint firstItem="CH2-gm-LcR" firstAttribute="top" secondItem="MaT-l1-2kX" secondAttribute="bottom" id="pgy-0e-6sX"/>
+                            <constraint firstItem="Z4G-Hc-KmI" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="sAS-dZ-Spw"/>
                             <constraint firstItem="gNa-j3-pL8" firstAttribute="top" secondItem="MaT-l1-2kX" secondAttribute="bottom" constant="10" id="uUO-KD-k0D"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="bannerView" destination="Z4G-Hc-KmI" id="8ji-E7-5Lg"/>
                         <outlet property="bestScoreLabel" destination="Czi-Ai-JAO" id="Ao2-Im-y2o"/>
                         <outlet property="currentScore" destination="hx9-qP-Lbk" id="Dqg-jM-hQ6"/>
                         <outlet property="gameOverView" destination="uj7-Pp-F25" id="bUg-BH-SB4"/>
