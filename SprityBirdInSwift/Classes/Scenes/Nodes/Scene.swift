@@ -102,7 +102,7 @@ class Scene : SKScene, SKPhysicsContactDelegate {
         var lastBlockPos:CGFloat = 0.0;
         self.bottomPipes = [];
         self.topPipes = [];
-        for var i=0; i<self.nbObstacles ; i++ {
+        for i in 0 ..< self.nbObstacles  {
             let topPipe = SKSpriteNode(imageNamed: "pipe_top");
             topPipe.anchorPoint = CGPointZero;
             self.addChild(topPipe);
@@ -123,7 +123,7 @@ class Scene : SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if(self.birdDeath) {
             self.startGame();
         } else {
@@ -148,7 +148,7 @@ class Scene : SKScene, SKPhysicsContactDelegate {
             return;
         }
         
-        for var i=0; i<self.nbObstacles; i++ {
+        for i in 0 ..< self.nbObstacles {
             let topPipe = self.topPipes[i];
             let bottomPipe = self.bottomPipes[i];
             
@@ -165,7 +165,7 @@ class Scene : SKScene, SKPhysicsContactDelegate {
     func place(bottomPipe: SKSpriteNode, topPipe: SKSpriteNode, xPos: CGFloat) {
         let availableSpace = self.frame.size.height - self.floor!.frame.size.height;
         let maxVariance = availableSpace - (2 * OBSTACLE_MIN_HEIGHT) - VERTICAL_GAP_SIZE;
-        let test = 0.0;
+        //let test = 0.0;
         let variance = Math().randomFloatBetween(Float(0.0), max: Float(maxVariance));
         
         let minBottomPosY = self.floor!.frame.size.height + OBSTACLE_MIN_HEIGHT - self.frame.size.height;
@@ -186,12 +186,12 @@ class Scene : SKScene, SKPhysicsContactDelegate {
     }
     
     func updateScore(currentTime: NSTimeInterval) {
-        for var i=0; i<self.nbObstacles; i++ {
+        for i in 0 ..< self.nbObstacles {
             let topPipe = self.topPipes[i];
             let topPipePosition = topPipe.frame.origin.x + topPipe.frame.size.width/2;
             if(topPipePosition > self.bird!.position.x && topPipePosition < self.bird!.position.x + FLOOR_SCROLLING_SPEED) {
-                self.score++;
-                self.scoreLabel.text = NSString(format: "%lu", self.score);
+                self.score += 1;
+                self.scoreLabel.text = NSString(format: "%lu", self.score) as String;
                 if(self.score>=10) {
                     self.scoreLabel.fontSize = 340;
                     self.scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), 120);

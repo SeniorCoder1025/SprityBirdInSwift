@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
@@ -16,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CH2-gm-LcR" userLabel="gameView" customClass="SKView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CH2-gm-LcR" userLabel="gameView" customClass="SKView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NiZ-lt-7NF" userLabel="getReadyView">
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NiZ-lt-7NF" userLabel="getReadyView">
                                         <rect key="frame" x="0.0" y="188" width="320" height="192"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="get_ready.png" translatesAutoresizingMaskIntoConstraints="NO" id="yG3-Wq-3CO">
@@ -30,9 +32,13 @@
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="Ghx-mr-00W"/>
+                                            <constraint firstAttribute="height" constant="192" id="dKq-NY-68g"/>
+                                        </constraints>
                                     </view>
-                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-Pp-F25" userLabel="gameOverView">
-                                        <rect key="frame" x="0.0" y="188" width="320" height="220"/>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-Pp-F25" userLabel="gameOverView">
+                                        <rect key="frame" x="0.0" y="174" width="320" height="220"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="game_over.png" translatesAutoresizingMaskIntoConstraints="NO" id="E9M-XD-v6x">
                                                 <rect key="frame" x="30" y="0.0" width="260" height="45"/>
@@ -57,12 +63,39 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="220" id="8Qf-YV-TUc"/>
+                                            <constraint firstAttribute="width" constant="320" id="ySF-nK-uwF"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="uj7-Pp-F25" firstAttribute="centerX" secondItem="CH2-gm-LcR" secondAttribute="centerX" id="7b3-4I-kyk"/>
+                                    <constraint firstItem="uj7-Pp-F25" firstAttribute="centerY" secondItem="CH2-gm-LcR" secondAttribute="centerY" id="HVK-uc-AqY"/>
+                                    <constraint firstItem="NiZ-lt-7NF" firstAttribute="centerY" secondItem="CH2-gm-LcR" secondAttribute="centerY" id="PyP-Ao-kkg"/>
+                                    <constraint firstItem="NiZ-lt-7NF" firstAttribute="centerX" secondItem="CH2-gm-LcR" secondAttribute="centerX" id="Yx1-sm-4sW"/>
+                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNa-j3-pL8">
+                                <rect key="frame" x="219" y="10" width="85" height="30"/>
+                                <state key="normal" title="Remove Ads">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.76470588240000004" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRemoveAds:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yO6-Cl-1Iu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CH2-gm-LcR" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="FLc-Mn-fDF"/>
+                            <constraint firstItem="CH2-gm-LcR" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="IGS-A1-hsT"/>
+                            <constraint firstItem="suH-NP-539" firstAttribute="top" secondItem="CH2-gm-LcR" secondAttribute="bottom" id="Mfa-L6-7m5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gNa-j3-pL8" secondAttribute="trailing" id="TEM-k9-8AH"/>
+                            <constraint firstItem="CH2-gm-LcR" firstAttribute="top" secondItem="MaT-l1-2kX" secondAttribute="bottom" id="pgy-0e-6sX"/>
+                            <constraint firstItem="gNa-j3-pL8" firstAttribute="top" secondItem="MaT-l1-2kX" secondAttribute="bottom" constant="10" id="uUO-KD-k0D"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -72,11 +105,13 @@
                         <outlet property="gameView" destination="CH2-gm-LcR" id="qKO-Rq-n79"/>
                         <outlet property="getReadyView" destination="NiZ-lt-7NF" id="AJN-DY-6nS"/>
                         <outlet property="medalImageView" destination="M3R-fY-Sp5" id="HgQ-jZ-BVo"/>
+                        <outlet property="removeAds" destination="gNa-j3-pL8" id="wum-qi-jH9"/>
                         <outlet property="view" destination="kh9-bI-dsS" id="FHi-9B-LmN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="305" y="404"/>
         </scene>
     </scenes>
     <resources>
@@ -86,9 +121,4 @@
         <image name="medal_plate.png" width="226" height="116"/>
         <image name="taptap.png" width="120" height="100"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
